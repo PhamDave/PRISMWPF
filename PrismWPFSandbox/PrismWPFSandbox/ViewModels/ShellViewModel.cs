@@ -36,8 +36,9 @@ namespace PrismWPFSandbox.ViewModels
         }
 
         /// <summary>
-        /// I cannot figure this out.  How to add ModuleBView to Region 02 and pass parameters at the same time?
-        /// where Main app doesn't take a dependency on ModuleB project.  Loosely coupled.
+        /// Too dumb to figure this out?!?!  Tearing hair out.... hummmm....
+        /// How to add ModuleBView to Region02 and pass parameters at the same time?
+        /// Constraint: Main project should not take a dependency on ModuleB project.  Loosely coupled.
         /// </summary>
         /// <param name="obj"></param>
         private void AddModuleBToRegion02(object obj)
@@ -60,7 +61,7 @@ namespace PrismWPFSandbox.ViewModels
             var v = _container.Resolve<UserControl>(KnownServiceKeys.ModuleViewB);
             _regionManager.AddToRegion(KnownRegions.Region02, v);
 
-            // Try Func<object>
+            // Try to use Func<object> to resolve View
             //_regionManager.RegisterViewWithRegion(KnownRegions.Region02, GetView);
         }
 
