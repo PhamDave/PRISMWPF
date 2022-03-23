@@ -14,6 +14,8 @@ using DryIoc;
 using Infrastructure;
 using Infrastructure.Interfaces;
 using Infrastructure.ResourceNames;
+using Prism.Modularity;
+using PrismWPFSandbox.Views;
 
 namespace PrismWPFSandbox.ViewModels
 {
@@ -21,39 +23,50 @@ namespace PrismWPFSandbox.ViewModels
     {
         public ShellViewModel(IContainer container,
             IEventAggregator eventAggregator, 
-            IRegionManager regionManager)
+            IRegionManager regionManager,
+            IModuleManager moduleManager)
         {
             _container = container;
             _eventAggregator = eventAggregator;
             _regionManager = regionManager;
+            _moduleManager = moduleManager;
 
             _shellRegionName01 = KnownRegions.Region01;
-            NewChartCommand = new DelegateCommand<object>(AddModuleBToRegion02, CanAddToRegion);
+            AddModuleBCommand = new DelegateCommand<object>(AddModuleBToRegion02, CanAddToRegion);
         }
 
         /// <summary>
-        /// Add Module B to Region02
+        /// I cannot figure this out.  How to add ModuleBView to Region 02 and pass parameters at the same time?
+        /// where Main app doesn't take a dependency on ModuleB project.  Loosely coupled.
         /// </summary>
         /// <param name="obj"></param>
         private void AddModuleBToRegion02(object obj)
         {
-            var vm = _container.Resolve<Func<string, IModuleAViewModel>>(KnownServiceKeys.ModuleViewModelB);
+            // try to add to region by ViewModel to also be able to send params           
+            var vm = _container.Resolve<Func<string, IModuleBViewModel>>(KnownServiceKeys.ModuleViewModelB);
             var viewModel = vm($"Parameterized {KnownServiceKeys.ModuleViewModelB} Title [{DateTime.Now}]");
-            
+
+            var region = _regionManager.Regions[KnownRegions.Region02];
+            if (!region.Views.Contains(viewModel))
+            {
+                region.Add(viewModel);
+                region.Activate(viewModel); 
+            } 
+
+            // try to add to region by view
+            _regionManager.RegisterViewWithRegion(KnownRegions.Region02, 
+                GetView);
+
             var v = _container.Resolve<UserControl>(KnownServiceKeys.ModuleViewB);
             _regionManager.AddToRegion(KnownRegions.Region02, v);
 
-            IRegion region = _regionManager.Regions[KnownRegions.Region02]; //get the region
-            
-            if (!region.Views.Contains(viewModel))
-                region.Add(viewModel); //add the viewModel
-            
-            region.Activate(viewModel); //active the viewModel
+            // Try Func<object>
+            //_regionManager.RegisterViewWithRegion(KnownRegions.Region02, GetView);
+        }
 
-            // if (!region.Views.Contains(viewModel))
-            //     _regionManager.RegisterViewWithRegion(KnownRegionNames.TabGroupPane02, typeof())
-
-            //var r = _regionManager.Regions[KnownRegionNames.TabGroupPane01].Views;
+        object GetView()
+        {
+            return _container.Resolve<UserControl>(KnownServiceKeys.ModuleViewB);
         }
         private bool CanAddToRegion(object arg)
         {
@@ -77,7 +90,8 @@ namespace PrismWPFSandbox.ViewModels
         private readonly IContainer _container;
         private readonly IEventAggregator _eventAggregator;
         private readonly IRegionManager _regionManager;
+        private readonly IModuleManager _moduleManager;
 
-        public ICommand NewChartCommand { get; set; }
+        public ICommand AddModuleBCommand { get; set; }
     }
 }

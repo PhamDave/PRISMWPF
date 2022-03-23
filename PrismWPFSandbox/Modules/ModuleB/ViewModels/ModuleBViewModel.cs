@@ -1,15 +1,16 @@
 using System;
+using Infrastructure.Interfaces;
 using Prism;
 using Prism.Events;
 using Prism.Mvvm;
 
-namespace ModuleA.ViewModels;
+namespace ModuleB.ViewModels;
 
-public class ModuleAViewModel : BindableBase, IActiveAware
+public class ModuleBViewModel : BindableBase, IModuleBViewModel, IActiveAware
 {
-    public ModuleAViewModel(IEventAggregator aggregator)
+    public ModuleBViewModel(string message)
     {
-        Message = "Hello from Module A ViewModel";
+        Message = message;
     }
     
     private string _message;
@@ -25,6 +26,5 @@ public class ModuleAViewModel : BindableBase, IActiveAware
         get => _isActive;
         set => SetProperty(ref _isActive, value);
     }
-
     public event EventHandler? IsActiveChanged;
 }

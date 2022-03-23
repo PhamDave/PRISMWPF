@@ -2,6 +2,8 @@
 using DryIoc;
 using Infrastructure.Interfaces;
 using Infrastructure.ResourceNames;
+using ModuleB.ViewModels;
+using ModuleB.Views;
 using Prism.Ioc;
 using Prism.DryIoc;
 using Prism.Modularity;
@@ -14,11 +16,12 @@ public class ModuleBModule : IModule
 {
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        
+        containerRegistry.Register<IModuleBViewModel, ModuleBViewModel>(KnownServiceKeys.ModuleViewModelB);
+        containerRegistry.Register<IModuleBView, ModuleBView>(KnownServiceKeys.ModuleViewB);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
-
+        
     }
 }

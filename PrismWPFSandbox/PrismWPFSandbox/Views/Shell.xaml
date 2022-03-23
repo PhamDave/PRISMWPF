@@ -19,16 +19,28 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Background="Azure"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+        >Region 01</Label>
         <ContentControl Grid.Row="0" 
                         Background="Cornsilk"
                         prism:RegionManager.RegionName="{x:Static resourceNames:KnownRegions.Region01 }" />
-        <ContentControl Grid.Row="1" 
+        <Button Grid.Row="1" Height="60" Command="{Binding AddModuleBCommand}">Add Module B to Region 02</Button>
+        <Label Grid.Row="2" 
+               Background="NavajoWhite"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+        >Region 02</Label>
+        <ContentControl Grid.Row="2" 
                         Background="Azure"
                         prism:RegionManager.RegionName="{x:Static resourceNames:KnownRegions.Region02 }" />
-        <ContentControl Grid.Row="2" 
+        <ContentControl Grid.Row="3" 
                         Background="Thistle"
                         prism:RegionManager.RegionName="{x:Static resourceNames:KnownRegions.Region03 }" />
         
