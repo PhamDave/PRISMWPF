@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismWPFSandbox", "PrismWPFSandbox\PrismWPFSandbox.csproj", "{269BF571-67A5-42C0-9225-8A2C96DEAE45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C90CBFBB-A431-4D9F-8C98-95525984E434}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2BCD4DD4-477F-46FF-82F1-EDC673A3D5B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "Modules\ModuleA\ModuleA.csproj", "{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB", "Modules\ModuleB\ModuleB.csproj", "{8F3D1884-CFB5-4119-BC25-3B7E225E83D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,21 @@ Global
 		{269BF571-67A5-42C0-9225-8A2C96DEAE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{269BF571-67A5-42C0-9225-8A2C96DEAE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{269BF571-67A5-42C0-9225-8A2C96DEAE45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90CBFBB-A431-4D9F-8C98-95525984E434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90CBFBB-A431-4D9F-8C98-95525984E434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90CBFBB-A431-4D9F-8C98-95525984E434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90CBFBB-A431-4D9F-8C98-95525984E434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3D1884-CFB5-4119-BC25-3B7E225E83D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3D1884-CFB5-4119-BC25-3B7E225E83D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3D1884-CFB5-4119-BC25-3B7E225E83D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3D1884-CFB5-4119-BC25-3B7E225E83D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9BEA8A7-BCC8-455F-B1D5-B3A7F126A872} = {2BCD4DD4-477F-46FF-82F1-EDC673A3D5B1}
+		{8F3D1884-CFB5-4119-BC25-3B7E225E83D8} = {2BCD4DD4-477F-46FF-82F1-EDC673A3D5B1}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="xcopy /y $(ProjectDir)$(OutDir)$(TargetFileName) $(SolutionDir)\PRISMWPFSandbox\bin\Release\Modules\&#xA;xcopy /y $(ProjectDir)$(OutDir)$(TargetFileName) $(SolutionDir)\PRISMWPFSandbox\bin\Debug\Modules\" />
+    </Target>
+
+</Project>
